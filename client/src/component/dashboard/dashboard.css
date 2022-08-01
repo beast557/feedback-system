@@ -1,0 +1,19 @@
+.boxes{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box{
+    background-color: var(--secondary-color);
+    padding: 10px;
+    width: 14.68rem;
+    margin: 1em 1em 1em 0;
+}
+.box h1,
+.box p{
+    color: var(--light-color-100);
+}
+.box p{
+    margin-top: 1em;
+    font-weight: 200;
+}

@@ -1,0 +1,21 @@
+.adminpannel{
+    width: 80%;
+    margin: 0 auto;
+    background-color: var(--primary-color);
+    
+}
+.title{
+    text-align: center;
+    
+}
+.flex-item{
+    display: flex;
+    justify-content: space-around;
+}
+.boxes{
+    background-color: var(--secondary-color);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    padding: 25px;
+}

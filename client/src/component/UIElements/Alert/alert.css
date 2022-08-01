@@ -1,0 +1,14 @@
+.alert{
+    padding: 0.5em 2em;
+    border-radius: 0.4em;
+}
+
+.alert-danger{
+    border: 1px solid var(--secondary-color);
+    color: var(--light-color-100);
+}
+
+.alert-success{
+    border:1px solid var(--dark-color);
+    color: var(--light-color-100);
+}

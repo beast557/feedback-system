@@ -1,0 +1,74 @@
+/* this css file contains gobal css */
+
+:root{
+  --primary-color:hsl(207, 49%, 66%);
+  --secondary-color: hsl(351, 90%, 60%);
+  --dark-color:hsl(0, 0%, 0%);
+  --light-color-100: hsl(0, 0%, 100%);
+  --light-color-500:hsl(0, 20%, 93%);
+  --main-font:  'Poppins', sans-serif;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--main-font);
+}
+
+a{
+  text-decoration: none;
+  color: var(--dark-color);
+}
+
+section{
+  background-color: var(--primary-color);
+  padding: 3.5em 3em;
+  max-width: 700px;
+  min-width: 375px;
+  min-height: 80vh;
+}
+section a{
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+section a:hover{
+  color: var(--secondary-color);
+  font-weight: 600;
+  border-bottom: 1px solid black;
+}
+main{
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-color);
+}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+form input{
+  outline: none;
+  border:none;
+  padding: 0.6rem 1rem;
+  border-radius: 3px;
+}
+
+form input
+{
+  margin: 0 0 1em 0;
+}
+
+@media screen and (min-width: 1020px) {
+ .main{
+   display: flex;
+   justify-content: center;
+ }
+ section{
+   min-width: 600px;
+ }
+}

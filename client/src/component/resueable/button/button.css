@@ -1,0 +1,17 @@
+.btn{
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5em 2em;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+.btn-primary{
+    background-color:var(--secondary-color);
+    color: var(--light-color-100);
+}
+.btn-primary:hover{
+    background-color:var(--secondary-color);
+    color: var(--light-color-100);
+    opacity: 0.8;
+}

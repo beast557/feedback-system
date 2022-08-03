@@ -21,6 +21,7 @@ export const FETCH_FACULTIES = "FETCH_FACULTIES";
 export const ADD_FACULTY = "ADD_FACULTY";
 
 export const FETCH_QUESTION = "FETCH_QUESTION";
+export const FETCH_QUESTIONS = "FETCH_QUESTIONS";
 
 export const ADD_QUESTION = "ADD QUESTION";
 

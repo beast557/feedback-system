@@ -19,7 +19,7 @@ router.post(
       "Your answer can't contain more than 140 characters"
     ).isLength({ max: 140 }),
   ],
-  auth,
+  
   create_answer
 );
 router.post("/save_answer", auth, save_question_answer_student);

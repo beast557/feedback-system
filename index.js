@@ -44,7 +44,7 @@ Faculty.hasMany(Question, {
   constraints: true,
   onDelete: "CASCADE",
 });
-Faculty.belongsTo(Teacher);
+Question.belongsTo(Faculty);
 
 Question.hasMany(Answer, {
   constraints: true,

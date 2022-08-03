@@ -10,7 +10,7 @@ exports.create_answer = async (req, res, next) => {
     return res.status(422).json({ errors: errors.array() });
   }
   const { answer } = req.body;
-  const { id } = req.user;
+  
   const { questionId } = req.params;
 
   try {

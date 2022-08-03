@@ -10,5 +10,5 @@
 
 .alert-success{
     border:1px solid var(--dark-color);
-    color: var(--light-color-100);
+    color: yellow;
 }

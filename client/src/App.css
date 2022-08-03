@@ -72,3 +72,16 @@ form input
    min-width: 600px;
  }
 }
+.main-table{
+  width: 60vw;
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  height: 100vh;
+}
+.center-me-table{
+  margin: 0 auto;
+}
+.answer-table{
+  width: 50%;
+}

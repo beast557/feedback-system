@@ -8,6 +8,7 @@ const auth = require("../../middleware/auth");
 const {
   create_question,
   show_questions_with_answers,
+  show_question_with_answers
 } = require("../../controllers/question");
 
 router.post(
@@ -22,7 +23,8 @@ router.post(
   auth,
   create_question
 );
-router.get("/", auth, show_questions_with_answers);
+router.get("/", show_questions_with_answers);
+router.get("/:id", show_question_with_answers);
 // router.get("/",auth,get_posts);
 
 // router.get("/:postId",auth,get_post_pk);

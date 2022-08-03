@@ -11,7 +11,7 @@ import { get_students } from "../../actions/student";
 
 import Button from "../resueable/button/Button";
 import Label from "../resueable/lable/Label";
-import Alert from "../UIElements/Alert/Alert";
+
 import StudentList from "./StudentList";
 import ShowTableHeader from "./ShowTableHeader";
 const ShowStudentComponent = ({

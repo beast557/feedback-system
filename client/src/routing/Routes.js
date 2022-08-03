@@ -40,7 +40,7 @@ const Routes = () => {
           exact
         />
         <PrivateRoute
-          path="/admin-pannel/add_answer"
+          path="/admin-pannel/add_answer/:id"
           component={Add_answer}
           exact
         />

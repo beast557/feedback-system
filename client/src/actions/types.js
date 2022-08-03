@@ -20,6 +20,10 @@ export const FETCH_FACULTIES = "FETCH_FACULTIES";
 
 export const ADD_FACULTY = "ADD_FACULTY";
 
+export const FETCH_QUESTION = "FETCH_QUESTION";
+
 export const ADD_QUESTION = "ADD QUESTION";
 
 export const ADD_ANSWER = "ADD_ANSWER";
+
+export const FETCH_STUDENTS = "FETCH_STUDENTS"

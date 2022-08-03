@@ -4,6 +4,7 @@ require("dotenv").config({ path: "./config.env" });
 const Student = require("../models/Student");
 
 const bcrypt = require("bcryptjs");
+const Faculty = require("../models/faculty");
 //code for login
 exports.show_student = async (req, res, next) => {
   let { id } = req.params;
@@ -39,22 +40,20 @@ exports.show_student = async (req, res, next) => {
 };
 
 exports.show_students = async (req, res, next) => {
+  let { facultyId } = req.params;
+  console.log(facultyId);
   try {
     let student = await Student.findAll({
-      attributes: ["id", "email", "createdAt"],
-      // include: [
-      //   {
-      //     model: User_role,
-      //     where: {
-      //       role: "student",
-      //     },
-      //     attributes: ["role"],
-      //   },
-      //   {
-      //     model: User_detail,
-      //     attributes: ["first_name", "last_name"],
-      //   },
-      // ],
+      where: {
+        facultyId: facultyId,
+      },
+      attributes: ["id", "email", "full_name","createdAt"],
+      include: [
+        {
+          model: Faculty,
+          attributes: ["name"],
+        },
+      ],
     });
     if (!student) {
       return res.status(400).json({ errors: [{ msg: "No student to show " }] });

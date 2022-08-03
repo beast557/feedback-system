@@ -7,6 +7,7 @@ require("dotenv").config();
 const studentAuth = require("./routes/v1/auth");
 
 const facultyRoute = require("./routes/v1/faculty");
+const studentRoute = require("./routes/v1/student");
 
 const teacherAuth = require("./routes/v1/teacher_auth");
 
@@ -27,6 +28,7 @@ app.use("/api/v1/student/auth", studentAuth);
 app.use("/api/v1/teacher/auth", teacherAuth);
 
 app.use("/api/v1/faculty", facultyRoute);
+app.use("/api/v1/student", studentRoute);
 app.use("/api/v1/question", question);
 app.use("/api/v1/answer", answerRoute);
 app.use(function (req, res, next) {
@@ -68,6 +70,12 @@ Student.hasMany(Question_answer_student, {
   onDelete: "CASCADE",
 });
 Question_answer_student.belongsTo(Student);
+
+Faculty.hasMany(Student, {
+  constraints: true,
+  onDelete: "CASCADE",
+});
+Student.belongsTo(Faculty);
 
 const PORT = process.env.PORT || 5000;
 sequelize

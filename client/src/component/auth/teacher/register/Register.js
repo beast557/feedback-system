@@ -30,7 +30,7 @@ const Register = ({ register, isAuthenticated }) => {
     register({ password, confirm_password, full_name, email });
   };
   if (isAuthenticated) {
-    return <Redirect to="/admin-panel" />;
+    return <Redirect to="/admin-pannel" />;
   }
 
   return (

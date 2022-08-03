@@ -4,25 +4,25 @@ const router = express.Router();
 const { check } = require("express-validator");
 
 const {
-  show_user,
-  show_users,
-  delete_user,
-  update_user_email,
-  update_user_password,
+  show_student,
+  show_students,
+  delete_student,
+  update_student_email,
+  update_student_password,
 } = require("../../controllers/student");
 const auth = require("../../middleware/auth");
 
 //show all users
-router.get("/", show_users);
+router.get("/fac/:facultyId", show_students);
 //show user
-router.get("/:id", show_user);
+router.get("/:id", show_student);
 //edit user details
 
 router.put(
   "/",
   [check("email").isEmail().withMessage("Invalid Email")],
   auth,
-  update_user_email
+  update_student_email
 );
 
 //update password
@@ -41,9 +41,9 @@ router.put(
     ).isLength({ min: 5 }),
   ],
   auth,
-  update_user_password
+  update_student_password
 );
 //delete user
-router.delete("/:id", delete_user);
+router.delete("/:id", delete_student);
 
 module.exports = router;

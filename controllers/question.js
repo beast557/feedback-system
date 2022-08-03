@@ -2,8 +2,7 @@ const Question = require("../models/Question");
 const { validationResult } = require("express-validator");
 const Answer = require("../models/Answer");
 const Faculty = require("../models/faculty");
-// const User = require("../models/User");
-// const Comment = require('../models/Comment')
+const Student = require("../models/Student");
 
 exports.create_question = async (req, res, next) => {
   const errors = validationResult(req);
@@ -72,6 +71,36 @@ exports.show_question_with_answers = async (req, res, next) => {
       ],
     });
     res.json(questionWithAnswer);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
+
+exports.show_questions_with_answers_for_a_student = async (req, res, next) => {
+  // const { id } = req.user;
+  // console.log(id);
+  try {
+    console.log("workking");
+    // const findStudentFaculty = await Student.findOne({
+    //   where: { id: id },
+    //   include: [{ model: Faculty }],
+    // });
+    // console.log(findStudentFaculty);
+    // const questionsWithAnswer = await Question.findAll({
+    //   order: [["createdAt", "DESC"]],
+    //   attributes: ["id", "question"],
+    //   include: [
+    //     {
+    //       model: Answer,
+    //       attributes: ["id", "answer"],
+    //     },
+    //     {
+    //       model: Faculty,
+    //     },
+    //   ],
+    // });
+    // res.json(findStudentFaculty);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");

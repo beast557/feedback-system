@@ -8,7 +8,8 @@ const auth = require("../../middleware/auth");
 const {
   create_question,
   show_questions_with_answers,
-  show_question_with_answers
+  show_question_with_answers,
+  show_questions_with_answers_for_a_student,
 } = require("../../controllers/question");
 
 router.post(
@@ -25,14 +26,6 @@ router.post(
 );
 router.get("/", show_questions_with_answers);
 router.get("/:id", show_question_with_answers);
-// router.get("/",auth,get_posts);
-
-// router.get("/:postId",auth,get_post_pk);
-
-// router.get("/:userId/user",auth,get_post_uid);
-
-// router.delete("/:postId",auth,delete_post);
-
-// router.get("/:postId/permision",auth,check_permission);
+router.get("/student", show_questions_with_answers_for_a_student);
 
 module.exports = router;

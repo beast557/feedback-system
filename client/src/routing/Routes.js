@@ -15,11 +15,8 @@ import Login from "../component/pages/Login";
 import Register from "../component/pages/Register";
 import Show_students from "../component/pages/Show_students";
 
-// import Dashboard from '../component/pages/Dashboard'
-// import  Transaction  from '../component/pages/Transaction';
-// import  Companies  from '../component/pages/Companies';
-// import  Company  from '../component/pages/Company';
-
+import Dashboard from "../component/pages/Dashboard";
+import ShowQuestion from '../component/pages/ShowQuestion'
 const Routes = () => {
   return (
     <Fragment>
@@ -28,7 +25,7 @@ const Routes = () => {
         <Route path="/signup" component={Register} exact />
         <Route path="/teacher/login" component={TeacherLogin} exact />
         <Route path="/teacher/signup" component={TeacherRegister} exact />
-        <PrivateRoute path="/admin-pannel" component={Admin_Pannel} exact />
+
         <PrivateRoute
           path="/admin-pannel/add_faculty"
           component={Add_faculty}
@@ -49,11 +46,10 @@ const Routes = () => {
           component={Show_students}
           exact
         />
-        {/* <Route  path='/signup' component={Register} exact/>
-        <PrivateRoute exact path='/dashboard' component={Dashboard} />
-        <PrivateRoute exact path='/transaction' component={Transaction} />
-        <PrivateRoute exact path='/companies' component={Companies} />
-        <PrivateRoute exact path='/company/:companyId' component={Company} /> */}
+
+        <PrivateRoute path="/dashboard" component={Dashboard} exact />
+        <PrivateRoute path="/dashboard/showquestion" component={ShowQuestion} exact />
+     
       </Switch>
     </Fragment>
   );

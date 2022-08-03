@@ -1,35 +1,30 @@
-import React,{useEffect} from 'react'
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import Sidenav from '../UIElements/sidenav/Sidenav'
-import DashboardContent from '../dashboard/Dashboard'
-import Spinner from '../UIElements/spinner/Spinner'
-import {get_dashboard} from '../../actions/dashboard'
+import Sidenav from "../UIElements/sidenav/Sidenav";
+import DashboardContent from "../dashboard/Dashboard";
+import { Link } from "react-router-dom";
 
-const Dashboard = ({dashboard,loading,get_dashboard})=>{
-    useEffect(()=>{
-        get_dashboard();
-    },[get_dashboard])
-    return(
-        <div className="main">
-            
-    <Sidenav/>
-    {loading?<Spinner/>:<DashboardContent
-    dashboard={dashboard}
-    />}
-    
+const Dashboard = ({}) => {
+  return (
+    <>
+      <Sidenav />
+      <div className="adminpannel">
+        <div className="title">
+          <h2>Admin Pannel</h2>
+        </div>
+        <div className="flex-item">
+          <div className="boxes">
+            <Link to="/dashboard/showquestion">Show Questions</Link>
+          </div>
+          
+        </div>
+      </div>
+    </>
+  );
+};
 
-</div>
-    )
-}
+const mapStateToProps = (state) => ({});
 
-const mapStateToProps = state => ({
-    loading: state.dashboard.loading,
-    dashboard: state.dashboard.dashboard
-    });
-      
-    export default connect(
-    mapStateToProps,
-    {get_dashboard }
-    )(Dashboard);
+export default connect(mapStateToProps, {})(Dashboard);

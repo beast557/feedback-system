@@ -6,6 +6,7 @@ const ShowTableHeader = (props) => {
       <th>Full Name</th>
       <th>Faculty</th>
       <th>Email</th>
+      <th>Operation</th>
     </tr>
   );
 };

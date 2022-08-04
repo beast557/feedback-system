@@ -28,6 +28,7 @@ exports.show_questions_with_answers = async (req, res, next) => {
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
+  console.log("testing");
   try {
     const questionsWithAnswer = await Question.findAll({
       order: [["createdAt", "DESC"]],
@@ -78,31 +79,44 @@ exports.show_question_with_answers = async (req, res, next) => {
 };
 
 exports.show_questions_with_answers_for_a_student = async (req, res, next) => {
-  // const { id } = req.user;
-  // console.log(id);
+  console.log("testing");
   try {
-    console.log("workking");
-    // const findStudentFaculty = await Student.findOne({
-    //   where: { id: id },
-    //   include: [{ model: Faculty }],
-    // });
-    // console.log(findStudentFaculty);
-    // const questionsWithAnswer = await Question.findAll({
-    //   order: [["createdAt", "DESC"]],
-    //   attributes: ["id", "question"],
-    //   include: [
-    //     {
-    //       model: Answer,
-    //       attributes: ["id", "answer"],
-    //     },
-    //     {
-    //       model: Faculty,
-    //     },
-    //   ],
-    // });
-    // res.json(findStudentFaculty);
+    const questionsWithAnswer = await Question.findAll({
+      order: [["createdAt", "DESC"]],
+      attributes: ["id", "question"],
+      include: [
+        {
+          model: Answer,
+          attributes: ["id", "answer"],
+        },
+        {
+          model: Faculty,
+        },
+      ],
+    });
+    res.json(questionsWithAnswer);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 };
+
+
+exports.delete_question = async (req, res, next) => {
+  const {questionId} = req.params;
+  try{
+    const question = await Question.destroy({
+      where: {
+        id:questionId
+      },
+    });
+    if(question){
+      return res.status(202).send({ msg: [{ msg: "Question removed successfully" }]})
+    }
+  return res.status(404).send({ errors: [{ msg: "Question not found" }]});
+
+  }catch(err){
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+}

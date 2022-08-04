@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setAlert } from "./alert";
 
-import { FETCH_STUDENTS } from "./types";
+import { DELETE_STUDENT, FETCH_STUDENTS } from "./types";
 
 export const get_students = (facultyId) => async (dispatch) => {
   const config = {
@@ -21,5 +21,27 @@ export const get_students = (facultyId) => async (dispatch) => {
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
+  }
+};
+
+export const delete_student = (studentId) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  
+  try {
+    const res = await axios.delete(`/api/v1/student/${studentId}`, config);
+    dispatch({
+      type: DELETE_STUDENT,
+      payload: res,
+    });
+    
+  } catch (err) {
+    // const errors = err.response.data.errors;
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    // }
   }
 };

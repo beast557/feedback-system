@@ -8,6 +8,7 @@ const auth = require("../../middleware/auth");
 const {
   create_answer,
   save_question_answer_student,
+  delete_answer
 } = require("../../controllers/answer");
 
 router.post(
@@ -23,5 +24,6 @@ router.post(
   create_answer
 );
 router.post("/save_answer", auth, save_question_answer_student);
+router.delete("/:answerId",delete_answer);
 
 module.exports = router;

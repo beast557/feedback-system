@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setAlert } from "./alert";
 
-import { ADD_QUESTION, FETCH_QUESTION, FETCH_QUESTIONS } from "./types";
+import { ADD_QUESTION, FETCH_QUESTION, FETCH_QUESTIONS,DELETE_QUESTION } from "./types";
 
 export const add_question = (question, facultyId) => async (dispatch) => {
   const config = {
@@ -64,6 +64,28 @@ export const get_question = (id) => async (dispatch) => {
       payload: res,
     });
     console.log(res.data);
+  } catch (err) {
+    // const errors = err.response.data.errors;
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    // }
+  }
+};
+
+export const delete_question = (questionId) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  
+  try {
+    const res = await axios.delete(`/api/v1/question/${questionId}`, config);
+    dispatch({
+      type: DELETE_QUESTION,
+      payload: res,
+    });
+    // console.log(res.data);
   } catch (err) {
     // const errors = err.response.data.errors;
     // if (errors) {

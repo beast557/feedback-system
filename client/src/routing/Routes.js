@@ -16,7 +16,7 @@ import Register from "../component/pages/Register";
 import Show_students from "../component/pages/Show_students";
 
 import Dashboard from "../component/pages/Dashboard";
-import ShowQuestion from '../component/pages/ShowQuestion'
+import ShowQuestion from "../component/pages/ShowQuestion";
 const Routes = () => {
   return (
     <Fragment>
@@ -25,7 +25,7 @@ const Routes = () => {
         <Route path="/signup" component={Register} exact />
         <Route path="/teacher/login" component={TeacherLogin} exact />
         <Route path="/teacher/signup" component={TeacherRegister} exact />
-
+        <PrivateRoute path="/admin-pannel" component={Admin_Pannel} exact />
         <PrivateRoute
           path="/admin-pannel/add_faculty"
           component={Add_faculty}
@@ -48,8 +48,11 @@ const Routes = () => {
         />
 
         <PrivateRoute path="/dashboard" component={Dashboard} exact />
-        <PrivateRoute path="/dashboard/showquestion" component={ShowQuestion} exact />
-     
+        <PrivateRoute
+          path="/dashboard/showquestion"
+          component={ShowQuestion}
+          exact
+        />
       </Switch>
     </Fragment>
   );

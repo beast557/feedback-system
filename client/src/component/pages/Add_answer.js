@@ -5,12 +5,11 @@ import Button from "../resueable/button/Button";
 import Label from "../resueable/lable/Label";
 import Alert from "../UIElements/Alert/Alert";
 import { get_question } from "../../actions/question";
-import { add_answer } from "../../actions/answer";
+import { add_answer, delete_answer } from "../../actions/answer";
 import { useParams } from "react-router-dom";
 
 import Spinner from "../UIElements/spinner/Spinner";
 
-import ShowTableHeader from "./ShowTableHeader";
 const Add_answer = ({
   loading,
   add_answer,
@@ -18,6 +17,7 @@ const Add_answer = ({
   get_question,
   match,
   answers,
+  delete_answer,
 }) => {
   const { id } = useParams();
   useEffect(() => {
@@ -76,13 +76,19 @@ const Add_answer = ({
       </div>
       <div className="center-me-table answer-table">
         <table id="customers">
+          {answers.length < 1 ? null : <ShowTableHeader />}
           {answers.length < 1
             ? "No answers for this question"
-            : answers.map((answer) => <ShowAnswer answer={answer.answer} />)}
+            : answers.map((answer) => (
+                <ShowAnswer
+                  answer={answer.answer}
+                  id={answer.id}
+                  delete_answer={delete_answer}
+                />
+              ))}
         </table>
       </div>
       <br />
-      
     </>
   );
 };
@@ -96,6 +102,7 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   get_question,
   add_answer,
+  delete_answer,
 })(Add_answer);
 
 const ShowQuestion = (props) => {
@@ -103,9 +110,27 @@ const ShowQuestion = (props) => {
 };
 
 const ShowAnswer = (props) => {
+  const onClick = (e) => {
+    e.preventDefault();
+    props.delete_answer(props.id);
+    window.location.reload(false);
+  };
   return (
     <tr>
       <td>{props.answer}</td>
+      <td>
+        <span onClick={onClick}>Delete Answer</span>
+      </td>
     </tr>
+  );
+};
+const ShowTableHeader = () => {
+  return (
+    <>
+      <tr>
+        <th>Answer</th>
+        <th>Operation</th>
+      </tr>
+    </>
   );
 };

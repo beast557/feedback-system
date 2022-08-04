@@ -70,6 +70,7 @@ const ShowStudentComponent = ({
                     name={student.full_name}
                     faculty={student.faculty.name}
                     email={student.email}
+                    facultyId={facultyId}
                   />
                 ))}
           </table>

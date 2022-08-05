@@ -12,13 +12,12 @@ const Dashboard = ({}) => {
       <Sidenav />
       <div className="adminpannel">
         <div className="title">
-          <h2>Admin Pannel</h2>
+          <h2>Student Dashboard</h2>
         </div>
         <div className="flex-item">
           <div className="boxes">
             <Link to="/dashboard/showquestion">Show Questions</Link>
           </div>
-          
         </div>
       </div>
     </>

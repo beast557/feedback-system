@@ -85,3 +85,8 @@ form input
 .answer-table{
   width: 50%;
 }
+
+.display-question{
+
+  display: flex;
+}

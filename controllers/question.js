@@ -80,8 +80,18 @@ exports.show_question_with_answers = async (req, res, next) => {
 
 exports.show_questions_with_answers_for_a_student = async (req, res, next) => {
   console.log("testing");
+  const {id} = req.user;
   try {
+    const studentFaculty = await Student.findOne({
+      where:{
+        id:id
+      }
+    })
+    console.log(studentFaculty.facultyId)
     const questionsWithAnswer = await Question.findAll({
+      where:{
+        facultyId:studentFaculty.facultyId
+      },
       order: [["createdAt", "DESC"]],
       attributes: ["id", "question"],
       include: [

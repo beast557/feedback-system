@@ -72,15 +72,14 @@ export const register =
       batch_year,
       section,
     });
-    console.log(body);
     try {
       const res = await axios.post("/api/v1/student/auth/signup", body, config);
 
-      dispatch({
-        type: REGISTER_SUCCESS,
-        payload: res.data,
-      });
-      dispatch(loadUser());
+      // dispatch({
+      //   type: REGISTER_SUCCESS,
+      //   payload: res.data,
+      // });
+      dispatch(setAlert("Register success", "success"));
     } catch (err) {
       const errors = err.response.data.errors;
 

@@ -59,11 +59,12 @@ export const register =
           config
         );
 
-        dispatch({
-          type: REGISTER_SUCCESS,
-          payload: res.data,
-        });
-        dispatch(loadUser());
+        // dispatch({
+        //   type: REGISTER_SUCCESS,
+        //   payload: res.data,
+        // });
+        // dispatch(loadUser());
+        dispatch(setAlert("Register success Login to continue", "success"));
       } catch (err) {
         const errors = err.response.data.errors;
 

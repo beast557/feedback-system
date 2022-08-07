@@ -8,6 +8,7 @@ const ShowTableHeader = (props) => {
       <th>Total Answers</th>
       <th>Operation</th>
       <th>Operation</th>
+      <th>Operation</th>
     </tr>
   );
 };

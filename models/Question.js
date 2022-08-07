@@ -1,18 +1,17 @@
+const Sequelize = require("sequelize");
 
-const Sequelize = require('sequelize');
+const sequelize = require("../config/database");
 
-const sequelize = require('../config/database');
-
-const Question = sequelize.define('question', {
+const Question = sequelize.define("question", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
   },
   question: {
-    type:Sequelize.STRING,
-    allowNull: false
-  }
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 });
 module.exports = Question;

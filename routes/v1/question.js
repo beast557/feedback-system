@@ -11,6 +11,7 @@ const {
   show_question_with_answers,
   show_questions_with_answers_for_a_student,
   delete_question,
+  update_question
 } = require("../../controllers/question");
 
 router.post(
@@ -28,6 +29,7 @@ router.post(
 router.get("/", show_questions_with_answers);
 router.get("/:id", show_question_with_answers);
 router.delete("/:questionId", delete_question);
+router.put("/:questionId", update_question);
 
 router.post("/student",auth, show_questions_with_answers_for_a_student);
 

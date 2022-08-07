@@ -80,17 +80,17 @@ exports.show_question_with_answers = async (req, res, next) => {
 
 exports.show_questions_with_answers_for_a_student = async (req, res, next) => {
   console.log("testing");
-  const {id} = req.user;
+  const { id } = req.user;
   try {
     const studentFaculty = await Student.findOne({
-      where:{
-        id:id
-      }
-    })
-    console.log(studentFaculty.facultyId)
+      where: {
+        id: id,
+      },
+    });
+    console.log(studentFaculty.facultyId);
     const questionsWithAnswer = await Question.findAll({
-      where:{
-        facultyId:studentFaculty.facultyId
+      where: {
+        facultyId: studentFaculty.facultyId,
       },
       order: [["createdAt", "DESC"]],
       attributes: ["id", "question"],
@@ -111,22 +111,47 @@ exports.show_questions_with_answers_for_a_student = async (req, res, next) => {
   }
 };
 
-
 exports.delete_question = async (req, res, next) => {
-  const {questionId} = req.params;
-  try{
+  const { questionId } = req.params;
+  try {
     const question = await Question.destroy({
       where: {
-        id:questionId
+        id: questionId,
       },
     });
-    if(question){
-      return res.status(202).send({ msg: [{ msg: "Question removed successfully" }]})
+    if (question) {
+      return res
+        .status(202)
+        .send({ msg: [{ msg: "Question removed successfully" }] });
     }
-  return res.status(404).send({ errors: [{ msg: "Question not found" }]});
-
-  }catch(err){
+    return res.status(404).send({ errors: [{ msg: "Question not found" }] });
+  } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
-}
+};
+
+exports.update_question = async (req, res, next) => {
+  const { questionId } = req.params;
+  const { question } = req.body;
+  try {
+    const updated_question = await Question.update(
+      { question: question },
+      {
+        where: { id: questionId },
+      }
+      
+    );
+
+    console.log(updated_question);
+    if (updated_question) {
+      return res
+        .status(202)
+        .send({ msg: [{ msg: "Question updated successfully" }] });
+    }
+    return res.status(404).send({ errors: [{ msg: "Question not found" }] });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};

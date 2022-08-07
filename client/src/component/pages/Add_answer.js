@@ -22,7 +22,6 @@ const Add_answer = ({
   const { id } = useParams();
   useEffect(() => {
     get_question(id);
-    // console.log(id);
   }, [get_question]);
   const [formData, setFormData] = useState({
     answer: "",

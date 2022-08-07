@@ -9,6 +9,7 @@ const QuestionList = (props) => {
     props.delete_question(props.id);
     window.location.reload(false);
   };
+  
   return (
     <tr>
       <td>{props.question}</td>
@@ -19,6 +20,9 @@ const QuestionList = (props) => {
       </td>
       <td>
         <span onClick={onClick}>Delete Question</span>
+      </td>
+      <td>
+      <Link to={`/admin-pannel/update_question/${props.id}`}>Update Question</Link>
       </td>
     </tr>
   );

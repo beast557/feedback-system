@@ -94,19 +94,9 @@ exports.signup = async (req, res, next) => {
         id: teacher.id,
       },
     };
-
-    jwt.sign(
-      payload,
-      "" + process.env.jwtSecret,
-      {
-        expiresIn: 36000,
-      },
-      async (err, token) => {
-        if (err) throw err;
-
-        res.json({ token });
-      }
-    );
+    res.status(200).send({
+      msg: [{ msg: "Register Success." }],
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

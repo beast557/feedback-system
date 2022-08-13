@@ -19,7 +19,7 @@ const Register = ({ get_faculties, loading, faculties }) => {
         <div>
           <p>Already have an account?</p>
           <p>
-            Login <Link to="/">here</Link>
+            Login <Link to="/login">here</Link>
           </p>
         </div>
       </section>

@@ -10,7 +10,7 @@ exports.create_answer = async (req, res, next) => {
     return res.status(422).json({ errors: errors.array() });
   }
   const { answer } = req.body;
-  
+
   const { questionId } = req.params;
 
   try {
@@ -33,11 +33,10 @@ exports.save_question_answer_student = async (req, res, next) => {
   const studentId = req.user.id;
   const { questionId, answerId } = req.body;
   try {
-
     studentQuestionAnswer = await Question_answer_student.create({
       studentId,
       questionId,
-      answerId
+      answerId,
     });
     res.json(studentQuestionAnswer);
   } catch {
@@ -45,22 +44,35 @@ exports.save_question_answer_student = async (req, res, next) => {
     res.status(500).send("Server Error");
   }
 };
-
-exports.delete_answer = async (req, res, next) => {
-  const {answerId} = req.params;
-  try{
-    const answer = await Answer.destroy({
-      where: {
-        id:answerId
-      },
-    });
-    if(answer){
-      return res.status(202).send({ msg: [{ msg: "Answer removed successfully" }]})
-    }
-  return res.status(404).send({ errors: [{ msg: "Answer not found" }]});
-
-  }catch(err){
+exports.show_question_answer_student = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+  try {
+    const questionanswerstudent = await Question_answer_student.findAll({});
+    res.json(questionanswerstudent);
+  } catch {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
-}
+};
+exports.delete_answer = async (req, res, next) => {
+  const { answerId } = req.params;
+  try {
+    const answer = await Answer.destroy({
+      where: {
+        id: answerId,
+      },
+    });
+    if (answer) {
+      return res
+        .status(202)
+        .send({ msg: [{ msg: "Answer removed successfully" }] });
+    }
+    return res.status(404).send({ errors: [{ msg: "Answer not found" }] });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};

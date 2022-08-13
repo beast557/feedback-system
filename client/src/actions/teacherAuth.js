@@ -11,6 +11,7 @@ import {
   LOGOUT,
   CLEAR_PROFILE,
 } from "./types";
+import { Redirect } from "react-router-dom";
 
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -65,6 +66,7 @@ export const register =
         // });
         // dispatch(loadUser());
         dispatch(setAlert("Register success Login to continue", "success"));
+        <Redirect to="/teacher/login" />;
       } catch (err) {
         const errors = err.response.data.errors;
 

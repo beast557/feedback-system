@@ -1,4 +1,4 @@
-import { FETCH_QUESTIONS,FETCH_QUESTION ,GET_QUESTION_FOR_STUDENT} from "../actions/types";
+import { FETCH_QUESTIONS,FETCH_QUESTION ,GET_QUESTION_FOR_STUDENT,FETCH_QUESTION_ANSWER_STUDENT} from "../actions/types";
 
 const initialState = {
   questions: [],
@@ -6,7 +6,9 @@ const initialState = {
   question:{},
   question_loading:true,
   questions_for_student:[],
-  questions_for_student_loading:true
+  questions_for_student_loading:true,
+  question_answer_student:[],
+  question_answer_student_loading:true
 };
 
 export default function company(state = initialState, action) {
@@ -30,6 +32,12 @@ export default function company(state = initialState, action) {
           ...state,
           questions_for_student:payload,
           questions_for_student_loading:false
+        };
+        case FETCH_QUESTION_ANSWER_STUDENT:
+        return {
+          ...state,
+          question_answer_student:payload,
+          question_answer_student_loading:false
         }
     default:
       return state;

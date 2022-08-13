@@ -18,6 +18,7 @@ import Show_students from "../component/pages/Show_students";
 
 import Dashboard from "../component/pages/Dashboard";
 import ShowQuestion from "../component/pages/ShowQuestion";
+import ShowAnswers from "../component/pages/ShowAnswers";
 import Index from '../component/pages/Index'
 const Routes = () => {
   return (
@@ -59,6 +60,11 @@ const Routes = () => {
         <PrivateRoute
           path="/admin-pannel/update_question/:id"
           component={Update_question}
+          exact
+        />
+        <PrivateRoute
+          path="/admin-pannel/show_answer"
+          component={ShowAnswers}
           exact
         />
       </Switch>

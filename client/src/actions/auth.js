@@ -11,6 +11,7 @@ import {
   LOGOUT,
   CLEAR_PROFILE,
 } from "./types";
+import { Redirect } from "react-router-dom";
 
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -80,6 +81,7 @@ export const register =
       //   payload: res.data,
       // });
       dispatch(setAlert("Register success", "success"));
+      <Redirect to="/login" />;
     } catch (err) {
       const errors = err.response.data.errors;
 

@@ -11,6 +11,7 @@ const AdminPannelComponent = ({ dashboard, loading, get_dashboard }) => {
         <div className="boxes"><Link to="/admin-pannel/add_faculty">Add Faculty</Link></div>
         <div className="boxes"><Link to="/admin-pannel/add_question">Add Questions</Link></div>
         <div className="boxes"><Link to="/admin-pannel/show_student">Show Students</Link></div>
+        <div className="boxes"><Link to="/admin-pannel/show_answer">Show Students Answer</Link></div>
       </div>
     </div>
   );

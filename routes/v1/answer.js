@@ -8,7 +8,8 @@ const auth = require("../../middleware/auth");
 const {
   create_answer,
   save_question_answer_student,
-  delete_answer
+  delete_answer,
+  show_question_answer_student,
 } = require("../../controllers/answer");
 
 router.post(
@@ -20,10 +21,11 @@ router.post(
       "Your answer can't contain more than 140 characters"
     ).isLength({ max: 140 }),
   ],
-  
+
   create_answer
 );
 router.post("/save_answer", auth, save_question_answer_student);
-router.delete("/:answerId",delete_answer);
+router.delete("/:answerId", delete_answer);
+router.get("/", show_question_answer_student);
 
 module.exports = router;
